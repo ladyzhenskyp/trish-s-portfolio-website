@@ -232,6 +232,13 @@
     font-size: .8rem;
   }
   .card .visit::after{ content:" ↗"; }
+  .card .links{ display:flex; flex-wrap:wrap; gap: 22px; }
+  /* featured project: full width, with a column of facts beside the description */
+  .card.feature{ grid-column: 1 / -1; }
+  .card.feature .split{ display:grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 36px; align-items:start; }
+  .card.feature .facts{ list-style:none; margin:0; padding: 4px 0 0 28px; border-left: 1px solid var(--line); display:grid; gap: 14px; }
+  .card.feature .facts li{ font-family: var(--font-mono); font-size: .74rem; letter-spacing:.04em; color: var(--dim); }
+  .card.feature .facts b{ display:block; font-family: var(--font-display); font-weight: 480; font-size: 1.5rem; letter-spacing:0; color: var(--cream); }
 
   /* ---------- experience: the ledger ---------- */
   .entry{
@@ -374,6 +381,8 @@
   /* ---------- responsive ---------- */
   @media (max-width: 860px){
     .projects{ grid-template-columns: 1fr; }
+    .card.feature .split{ grid-template-columns: 1fr; gap: 22px; }
+    .card.feature .facts{ grid-template-columns: repeat(3, 1fr); padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--line); }
     .skill-grid{ grid-template-columns: 1fr; }
     .edu{ grid-template-columns: 1fr; }
     .entry{ grid-template-columns: 1fr; gap: 12px; }
@@ -424,6 +433,30 @@
       <h2>Things I <em>built</em></h2>
     </div>
     <div class="projects">
+      <div class="card feature reveal">
+        <div class="kind">Client Operations · Web App</div>
+        <h3>onboarding tracker <span class="spark">✦</span></h3>
+        <div class="split">
+          <div>
+            <p>The tool I wanted while onboarding clients: an implementation tracker that follows every account from kickoff to go-live. Health isn't a status someone remembers to update — it's computed live from six risk rules (missed go-lives, stale blockers, overdue milestones), so the dashboard answers one question: <em>who needs a call today?</em> Pipeline board, blockers, meetings, a team calendar. Go ahead and break things; the demo puts itself back every hour.</p>
+            <div class="stack">
+              <span class="chip">Python · FastAPI</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Risk-rules engine</span>
+              <span class="chip">Docker · CI</span>
+            </div>
+            <div class="links">
+              <a class="visit" href="https://onboarding-tracker-production-0880.up.railway.app" target="_blank" rel="noopener">live demo</a>
+              <a class="visit" href="https://github.com/ladyzhenskyp/onboarding-tracker" target="_blank" rel="noopener">code</a>
+            </div>
+          </div>
+          <ul class="facts" aria-label="Project facts">
+            <li><b>9</b>table PostgreSQL schema</li>
+            <li><b>6</b>configurable risk rules</li>
+            <li><b>61</b>automated tests</li>
+          </ul>
+        </div>
+      </div>
       <div class="card reveal">
         <div class="kind">AI · Web App</div>
         <h3>Stan's Pitch <span class="spark">✦</span></h3>
@@ -548,7 +581,7 @@
       <div class="skill-col reveal">
         <h4>Data &amp; Analysis</h4>
         <div class="chips">
-          <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">R</span>
+          <span class="chip">SQL · PostgreSQL</span><span class="chip">Python</span><span class="chip">R</span>
           <span class="chip">SPSS</span><span class="chip">Tableau</span>
           <span class="chip">Excel · Pivot Tables · VLOOKUP</span>
         </div>
@@ -557,6 +590,7 @@
         <h4>Platforms &amp; Tooling</h4>
         <div class="chips">
           <span class="chip">Salesforce</span><span class="chip">JIRA</span><span class="chip">Redmine</span>
+          <span class="chip">Git · GitHub</span><span class="chip">Docker</span>
           <span class="chip">Greenhouse</span><span class="chip">RevolutionEHR</span>
           <span class="chip">LabelStudio</span><span class="chip">Jumpserver</span>
         </div>
