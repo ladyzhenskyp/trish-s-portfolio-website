@@ -1,0 +1,12 @@
+/* Fonts are served from this site, so visitors' browsers never contact a font provider.
+   All three families are licensed under the SIL Open Font License 1.1 (see OFL.txt). */
+@font-face{ font-family:"Fraunces"; font-style:normal; font-weight:100 900; font-display:swap;
+  src:url(fraunces-latin-opsz-normal.woff2) format("woff2"); }
+@font-face{ font-family:"Fraunces"; font-style:italic; font-weight:100 900; font-display:swap;
+  src:url(fraunces-latin-opsz-italic.woff2) format("woff2"); }
+@font-face{ font-family:"Karla"; font-style:normal; font-weight:200 800; font-display:swap;
+  src:url(karla-latin-wght-normal.woff2) format("woff2"); }
+@font-face{ font-family:"IBM Plex Mono"; font-style:normal; font-weight:400; font-display:swap;
+  src:url(ibm-plex-mono-latin-400-normal.woff2) format("woff2"); }
+@font-face{ font-family:"IBM Plex Mono"; font-style:normal; font-weight:500; font-display:swap;
+  src:url(ibm-plex-mono-latin-500-normal.woff2) format("woff2"); }

@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patricia Ladyzhensky — Data & Client Operations</title>
 <meta name="description" content="Patricia Ladyzhensky is a data & client operations specialist in Brooklyn, NY. Portfolio, projects, and experience.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,560;1,9..144,340;1,9..144,480&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
   :root{
     --bg:        #1A1017;
@@ -27,7 +25,7 @@
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+  html{ scroll-behavior:smooth; scroll-padding-top: 84px; }
 
   body{
     background: var(--bg);
@@ -48,6 +46,10 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
+
+  .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip-path: inset(50%); white-space:nowrap; }
+  .skip{ position:absolute; left:16px; top:-60px; z-index:200; background: var(--rose); color: var(--bg); font-family: var(--font-mono); font-size:.8rem; padding:10px 16px; border-radius:8px; }
+  .skip:focus{ top:12px; color: var(--bg); }
 
   .wrap{ max-width: 1060px; margin: 0 auto; padding: 0 24px; }
 
@@ -305,7 +307,7 @@
     border-radius: var(--radius);
     padding: 26px 24px;
   }
-  .skill-col h4{
+  .skill-col h3{
     font-family: var(--font-mono);
     font-size: .74rem;
     letter-spacing: .14em;
@@ -346,8 +348,11 @@
     margin-top: 60px;
     font-family: var(--font-mono);
     font-size: .72rem;
-    color: #6E5A66;
+    color: var(--dim);
   }
+  .fineprint a{ color: var(--dim); text-decoration: underline; text-underline-offset: 3px; }
+  .fineprint a:hover{ color: var(--rose); }
+  .legal-links{ margin-top: 12px; }
 
   /* ---------- copy toast ---------- */
   .toast{
@@ -375,7 +380,13 @@
     html{ scroll-behavior:auto; }
     .reveal{ opacity:1; transform:none; transition:none; }
     .cursor{ animation:none; }
-    .btn, .card{ transition:none; }
+    .btn, .card, .toast{ transition:none; }
+    .btn:hover, .card:hover{ transform:none; }
+  }
+
+  /* Windows high-contrast mode: gradient text would otherwise disappear */
+  @media (forced-colors: active){
+    h1 em{ background:none; color: CanvasText; }
   }
 
   /* ---------- responsive ---------- */
@@ -391,12 +402,15 @@
     section{ padding: 64px 0; }
   }
 </style>
+<noscript><style>.reveal{ opacity:1; transform:none; }</style></noscript>
 </head>
 <body>
 
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Sections">
   <div class="nav-inner">
-    <a class="logo" href="#top"><span class="spark">✦</span> trish</a>
+    <a class="logo" href="#top"><span class="spark" aria-hidden="true">✦</span> trish<span class="sr-only"> — back to top</span></a>
     <div class="nav-links">
       <a href="#projects">projects</a>
       <a href="#experience">experience</a>
@@ -414,18 +428,19 @@
     <p class="eyebrow">Brooklyn, NY · Data &amp; Client Operations</p>
     <h1>Patricia <em>Ladyzhensky</em></h1>
     <p class="hero-sub">I keep data clean, clients happy, and platforms running. Currently a <strong>Customer Success Associate at Datazoic</strong>, where I onboard sell-side firms, demo to trading desks, and write the SQL that finds out why something broke before anyone panics.</p>
-    <div class="query" aria-label="A decorative SQL query">
+    <div class="query" role="img" aria-label="Decorative SQL query: SELECT * FROM candidates WHERE ops = 'meticulous' AND vibes = 'immaculate';">
       <span id="query-text"><span class="kw">SELECT</span> * <span class="kw">FROM</span> candidates <span class="kw">WHERE</span> ops = <span class="str">'meticulous'</span> <span class="kw">AND</span> vibes = <span class="str">'immaculate'</span>;</span><span class="cursor" aria-hidden="true"></span>
     </div>
     <div class="hero-ctas">
-      <a class="btn primary" href="mailto:ladyzhenskyp@gmail.com">✉ &nbsp;Email me</a>
-      <button class="btn copy-email" type="button" data-email="ladyzhenskyp@gmail.com" style="cursor:pointer;background:none">⧉ &nbsp;Copy email</button>
-      <a class="btn" href="https://www.linkedin.com/in/patricia-ladyzhensky-b814b9244" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn" href="#projects">See my work ↓</a>
+      <a class="btn primary" href="mailto:ladyzhenskyp@gmail.com"><span aria-hidden="true">✉ &nbsp;</span>Email me</a>
+      <button class="btn copy-email" type="button" data-email="ladyzhenskyp@gmail.com" style="cursor:pointer;background:none"><span aria-hidden="true">⧉ &nbsp;</span>Copy email</button>
+      <a class="btn" href="https://www.linkedin.com/in/patricia-ladyzhensky-b814b9244" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn" href="#projects">See my work <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 </header>
 
+<main id="main">
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -435,7 +450,7 @@
     <div class="projects">
       <div class="card feature reveal">
         <div class="kind">Client Operations · Web App</div>
-        <h3>onboarding tracker <span class="spark">✦</span></h3>
+        <h3>onboarding tracker <span class="spark" aria-hidden="true">✦</span></h3>
         <div class="split">
           <div>
             <p>The tool I wanted while onboarding clients: an implementation tracker that follows every account from kickoff to go-live. Health isn't a status someone remembers to update — it's computed live from six risk rules (missed go-lives, stale blockers, overdue milestones), so the dashboard answers one question: <em>who needs a call today?</em> Pipeline board, blockers, meetings, a team calendar. Go ahead and break things; the demo puts itself back every hour.</p>
@@ -446,38 +461,38 @@
               <span class="chip">Docker · CI</span>
             </div>
             <div class="links">
-              <a class="visit" href="https://onboarding-tracker-production-0880.up.railway.app" target="_blank" rel="noopener">live demo</a>
-              <a class="visit" href="https://github.com/ladyzhenskyp/onboarding-tracker" target="_blank" rel="noopener">code</a>
+              <a class="visit" href="https://onboarding-tracker-production-0880.up.railway.app" target="_blank" rel="noopener">live demo<span class="sr-only">: onboarding tracker (opens in a new tab)</span></a>
+              <a class="visit" href="https://github.com/ladyzhenskyp/onboarding-tracker" target="_blank" rel="noopener">code<span class="sr-only">: onboarding tracker on GitHub (opens in a new tab)</span></a>
             </div>
           </div>
           <ul class="facts" aria-label="Project facts">
             <li><b>9</b>table PostgreSQL schema</li>
             <li><b>6</b>configurable risk rules</li>
-            <li><b>61</b>automated tests</li>
+            <li><b>64</b>automated tests</li>
           </ul>
         </div>
       </div>
       <div class="card reveal">
         <div class="kind">AI · Web App</div>
-        <h3>Stan's Pitch <span class="spark">✦</span></h3>
+        <h3>Stan's Pitch <span class="spark" aria-hidden="true">✦</span></h3>
         <p>An AI stand-up comedian whose entire job is pitching me for operations roles. Paste in a job posting URL and Stan analyzes the fit — he's contractually obligated to say nice things, but they happen to be true. A portfolio piece that interviews on my behalf.</p>
         <div class="stack">
           <span class="chip">LLM integration</span>
           <span class="chip">Job-posting analysis</span>
           <span class="chip">Custom domain</span>
         </div>
-        <a class="visit" href="https://stanpitch.xyz" target="_blank" rel="noopener">stanpitch.xyz</a>
+        <a class="visit" href="https://stanpitch.xyz" target="_blank" rel="noopener">stanpitch.xyz<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div class="card reveal">
         <div class="kind">Productivity · Web App</div>
-        <h3>focus · flow <span class="spark">✦</span></h3>
+        <h3>focus · flow <span class="spark" aria-hidden="true">✦</span></h3>
         <p>A soft-pastel daily planner that treats wellbeing as data. Tasks, goals with milestones, a life-wheel snapshot, and a daily check-in that tracks mood, energy, sleep, and cycle phase — because good insights start with honest inputs.</p>
         <div class="stack">
           <span class="chip">Task &amp; goal tracking</span>
           <span class="chip">Daily check-ins</span>
           <span class="chip">Data visualization</span>
         </div>
-        <a class="visit" href="https://focus-flow-demo-1ds1.onrender.com" target="_blank" rel="noopener">live demo</a>
+        <a class="visit" href="https://focus-flow-demo-1ds1.onrender.com" target="_blank" rel="noopener">live demo<span class="sr-only">: focus flow (opens in a new tab)</span></a>
       </div>
     </div>
   </div>
@@ -492,8 +507,8 @@
 
     <div class="entry reveal">
       <div class="when">
-        03/2026 — 08/2026<br>New York, NY
-        <br><span class="flag live">✓ validated</span>
+        03/2026 — Present<br>New York, NY
+        <br><span class="flag live">● current</span>
       </div>
       <div>
         <h3>Datazoic</h3>
@@ -579,7 +594,7 @@
     </div>
     <div class="skill-grid">
       <div class="skill-col reveal">
-        <h4>Data &amp; Analysis</h4>
+        <h3>Data &amp; Analysis</h3>
         <div class="chips">
           <span class="chip">SQL · PostgreSQL</span><span class="chip">Python</span><span class="chip">R</span>
           <span class="chip">SPSS</span><span class="chip">Tableau</span>
@@ -587,7 +602,7 @@
         </div>
       </div>
       <div class="skill-col reveal">
-        <h4>Platforms &amp; Tooling</h4>
+        <h3>Platforms &amp; Tooling</h3>
         <div class="chips">
           <span class="chip">Salesforce</span><span class="chip">JIRA</span><span class="chip">Redmine</span>
           <span class="chip">Git · GitHub</span><span class="chip">Docker</span>
@@ -596,7 +611,7 @@
         </div>
       </div>
       <div class="skill-col reveal">
-        <h4>Languages</h4>
+        <h3>Languages</h3>
         <div class="chips">
           <span class="chip">English · fluent</span>
           <span class="chip">Russian · fluent</span>
@@ -626,6 +641,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer id="contact">
   <div class="glow rose"></div>
@@ -635,15 +651,16 @@
     <p class="sub">Hiring for data or client operations? I answer email faster than most APIs respond.</p>
     <div class="foot-links">
       <a class="btn primary" href="mailto:ladyzhenskyp@gmail.com">ladyzhenskyp@gmail.com</a>
-      <button class="btn copy-email" type="button" data-email="ladyzhenskyp@gmail.com" style="cursor:pointer;background:none">⧉ &nbsp;Copy</button>
-      <a class="btn" href="https://www.linkedin.com/in/patricia-ladyzhensky-b814b9244" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn" href="https://stanpitch.xyz" target="_blank" rel="noopener">Ask Stan about me ↗</a>
+      <button class="btn copy-email" type="button" data-email="ladyzhenskyp@gmail.com" style="cursor:pointer;background:none" aria-label="Copy email address"><span aria-hidden="true">⧉ &nbsp;</span>Copy</button>
+      <a class="btn" href="https://www.linkedin.com/in/patricia-ladyzhensky-b814b9244" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="btn" href="https://stanpitch.xyz" target="_blank" rel="noopener">Ask Stan about me <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
     </div>
     <p class="fineprint">✦ Patricia Ladyzhensky · Brooklyn, NY · built with care (and clean data)</p>
+    <p class="fineprint legal-links"><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="privacy.html#cookies">Cookies</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></p>
   </div>
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite">copied ✓</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
   // scroll reveals
@@ -710,9 +727,13 @@
         document.execCommand('copy');
         tmp.remove();
       }
+      toast.textContent = 'Email address copied ✓';   // set on click so screen readers announce it
       toast.classList.add('show');
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => { if (!toast.classList.contains('show')) toast.textContent = ''; }, 300);
+      }, 2400);
     });
   });
 </script>
